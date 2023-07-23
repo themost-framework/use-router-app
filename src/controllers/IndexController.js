@@ -5,7 +5,7 @@ class IndexController extends HttpController {
 
     @httpGet()
     index() {
-        return this.view('index');
+        return this.view();
     }
 
 }
