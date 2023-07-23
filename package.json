@@ -17,6 +17,7 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "@themost/ejs": "^2.0.1",
+    "@themost/router": "^1.0.0",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
     "ejs": "^3.1.8",
@@ -26,15 +27,20 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.3",
     "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-proposal-decorators": "^7.22.7",
     "@babel/preset-env": "^7.19.4",
+    "@babel/preset-typescript": "^7.22.5",
     "@babel/register": "^7.18.9",
+    "@types/lodash": "^4.14.195",
     "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "jasmine": "^5.0.2",
     "jasmine-spec-reporter": "^7.0.0",
+    "module-alias": "^2.2.3",
     "nodemon": "^3.0.1",
     "nyc": "^15.1.0",
-    "supertest": "^6.3.0"
+    "supertest": "^6.3.0",
+    "typescript": "^5.1.6"
   },
   "nodemonConfig": {
     "watch": [
@@ -42,7 +48,7 @@
       "spec"
     ],
     "execMap": {
-      "js": "node --require @babel/register --require dotenv/config"
+      "js": "node --require ./spec/helpers/babel --require ./spec/helpers/paths --require dotenv/config"
     },
     "verbose": true,
     "env": {

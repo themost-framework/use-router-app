@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import {ViewEngine} from '@themost/ejs';
+import { HttpApplication, RouterService, controllerRouter } from '@themost/router';
+import {routes} from './routes';
 
 function getApplication() {
     // init app
@@ -13,11 +15,12 @@ function getApplication() {
     app.engine('ejs', ViewEngine.express());
     app.set('view engine', 'ejs');
     app.set('views', path.resolve(__dirname, 'views'));
-
-    app.get('/', (req, res) => {
-        return res.render('index');
-    });
-
+    // create http application
+    const application = new HttpApplication();
+    // add routes
+    application.getService(RouterService).addRange(...routes);
+    // use controller middleware
+    app.use(controllerRouter(application));
     // and return
     return app;
 }
